@@ -1,0 +1,43 @@
+@import "bootstrap-icons/font/bootstrap-icons.css";
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+.btn-eye {
+  padding: 0.2rem 0.5rem; /* Ajusta el padding según sea necesario */
+  font-size: 0.8rem; /* Ajusta el tamaño de la fuente según sea necesario */
+}
+
+@font-face {
+  font-family: 'Monoton';
+  src: url('./assets/font/Monoton-Regular.ttf');
+}
+@font-face {
+  font-family: 'kant';
+  src: url('./assets/font/Kanit-Bold.ttf');
+}
+
+@font-face {
+  font-family:'kant-regular' ;
+  src: url('./assets/font/Kanit-Regular.ttf');
+}
+
+
+.logo {
+  
+  max-width: 100%; /* Ajusta el ancho máximo según sea necesario */
+  height: auto;    /* Permite que la altura se ajuste automáticamente */
+  display: block;  /* Evita márgenes no deseados alrededor de la imagen */
+  margin: auto;    /* Centra la imagen dentro de su contenedor */
+  width: 200px;    /* Ancho deseado */
+  height: 80px;
+}
+
+  
+  .container {
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+  }
+  
+ 
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,102 @@
+<app-navbar></app-navbar>
+
+<div class="container my-5">
+  <div class="background"></div>
+  <div *ngIf="usuario.es_admin">
+    <div class="text-center">
+      <h2 class="display-1 fw-bold mb-4" style="color: #f8f9fa; text-shadow: 2px 2px 4px #000;">Todas las reservas</h2>
+    </div>
+    <div *ngFor="let reserva of reservas" class="card my-3">
+      <div class="card-body">
+        <p class="card-text" style="margin-bottom: 15px;"><b style="font-size: 18px;">Fecha:</b><br><span style="font-size: 18px;">{{ reserva.fecha }}</span></p>
+        <p class="card-text" style="margin-bottom: 15px;"><b style="font-size: 18px;">Hora:</b><br><span style="font-size: 18px;">{{ reserva.hora }}</span></p>
+        <p class="card-text" style="margin-bottom: 15px;"><b style="font-size: 18px;">Usuario:</b><br><span style="font-size: 18px;">{{ reserva.usuario ? reserva.usuario.nombre : 'Usuario no encontrado' }}</span></p>
+        <p class="card-text" style="margin-bottom: 15px;"><b style="font-size: 18px;">Telefono:</b><br><span style="font-size: 18px;">{{ reserva.usuario ? reserva.usuario.telefono : 'Usuario no encontrado' }}</span></p>
+        <p class="card-text" style="margin-bottom: 15px;"><b style="font-size: 18px;">Sala:</b><br><span style="font-size: 18px;">{{ reserva.sala ? reserva.sala.nombre : 'Sala no encontrada' }}</span></p>
+        <p class="card-text" style="margin-bottom: 15px;"><b style="font-size: 18px;">Estado de Reserva:</b><br><span [ngClass]="{'text-success': reserva.pagada, 'text-danger': !reserva.pagada}" style="font-size: 18px;">{{ reserva.pagada ? 'Confirmada' : 'Pendiente' }}</span></p>
+        <p class="card-text" style="margin-bottom: 15px;"><b style="font-size: 18px;">Monto total:</b><br><span style="font-size: 18px;">{{ reserva.pagos[0].monto_total }}</span></p>
+        <p class="card-text" style="margin-bottom: 15px;"><b style="font-size: 18px;">Monto pagado:</b><br><span style="font-size: 18px;">{{ reserva.pagos[0].monto }}</span></p>
+        <p class="card-text" style="margin-bottom: 15px;"><b style="font-size: 18px;">Falta pagar:</b><br><span style="font-size: 18px;">{{ reserva.pagos[0].monto_total - reserva.pagos[0].monto }}</span></p>
+        <div *ngIf="!reserva.pagada" class="text-center">
+          <button class="custom-btn btn-confirmar" (click)="marcarComoPagada(reserva.id)">Confirmar Pago</button>
+        </div>
+        <div *ngIf="reserva.alquila_equipo">
+          <p class="card-text" style="margin-top: 25px;"><b style="font-size: 18px;">Equipos alquilados:</b></p>
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let equipo of reserva.equipos">
+              <img [src]="equipo.imagen" alt="{{ equipo.nombre }}" class="img-fluid mr-3" style="max-width: 50px;">
+              <span>{{ equipo.nombre }}</span>
+            </li>
+          </ul>
+        </div>
+       
+        <button class="custom-btn btn-cancelar-reserva" (click)="eliminarReserva(reserva.id)">Cancelar Reserva</button>
+        <button class="custom-btn btn-modificar-reserva" (click)="openModificarReservaModal(reserva.id,reserva.id_sala)">Modificar Reserva</button>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="!usuario.es_admin">
+    <div class="text-center">
+      <h2 class="display-1 fw-bold mb-4" style="color: #f8f9fa; text-shadow: 2px 2px 4px #000;">Mis reservas</h2>
+    </div>
+    <div *ngFor="let reserva of reservas" class="card my-3">
+      <div class="card-body">
+        <p class="card-text" style="margin-bottom: 15px;"><b style="font-size: 18px;">Fecha:</b><br><span style="font-size: 18px;">{{ reserva.fecha }}</span></p>
+        <p class="card-text" style="margin-bottom: 15px;"><b style="font-size: 18px;">Hora:</b><br><span style="font-size: 18px;">{{ reserva.hora }}</span></p>
+        <p class="card-text" style="margin-bottom: 15px;"><b style="font-size: 18px;">Sala:</b><br><span style="font-size: 18px;">{{ reserva.sala ? reserva.sala.nombre : 'Sala no encontrada' }}</span></p>
+        <p class="card-text" style="margin-bottom: 15px;"><b style="font-size: 18px;">Estado de Reserva:</b><br><span [ngClass]="{'text-success': reserva.pagada, 'text-danger': !reserva.pagada}" style="font-size: 18px;">{{ reserva.pagada ? 'Confirmada' : 'Pendiente' }}</span></p>
+        <p class="card-text" style="margin-bottom: 15px;"><b style="font-size: 18px;">Monto total:</b><br><span style="font-size: 18px;">{{ reserva.pagos[0].monto_total }}</span></p>
+        <p class="card-text" style="margin-bottom: 15px;"><b style="font-size: 18px;">Monto pagado:</b><br><span style="font-size: 18px;">{{ reserva.pagos[0].monto }}</span></p>
+        <p class="card-text" style="margin-bottom: 15px;"><b style="font-size: 18px;">Falta pagar:</b><br><span style="font-size: 18px;">{{ reserva.pagos[0].monto_total - reserva.pagos[0].monto }}</span></p>
+        <div *ngIf="reserva.alquila_equipo">
+          <p class="card-text" style="margin-top: 25px;"><b style="font-size: 18px;">Equipos asignados:</b></p>
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let equipo of reserva.equipos">
+              <img [src]="equipo.imagen" alt="{{ equipo.nombre }}" class="img-fluid mr-3" style="max-width: 50px;">
+              <span>{{ equipo.nombre }}</span>
+            </li>
+          </ul>
+        </div>
+        <button *ngIf="usuario.es_admin || puedeModificarReserva(reserva.fecha)" class="custom-btn btn-modificar-reserva" (click)="openModificarReservaModal(reserva.id,reserva.id_sala)">Modificar Reserva</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #modificarReservaModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Modificar Reserva</h4>
+    <button type="button" class="close" aria-label="Close" (click)="cerrarModificarReservaModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h3>Selecciona una fecha:</h3>
+    <ngb-datepicker #dp [(ngModel)]="fechaSeleccionada" (ngModelChange)="onSelectFecha($event)"  [minDate]="{year: currentYear, month: currentMonth, day: currentDay}"></ngb-datepicker>
+
+
+  <h3>Horarios disponibles para la fecha seleccionada:</h3>
+<div *ngIf="fechaSeleccionada">
+  <div *ngIf="horariosDisponibles.length > 0; else noHorarios">
+    <div class="btn-group" role="group" aria-label="Horarios disponibles">
+      <button *ngFor="let horario of horariosDisponibles"
+              type="button"
+              class="btn btn-outline-primary horario-button"
+              (click)="selectHorario(horario)"
+              [class.selected]="horario === nuevaHora">
+        {{ horario }}
+      </button>
+    </div>
+  </div>
+  <ng-template #noHorarios>
+    <p>No hay horarios disponibles para esta fecha.</p>
+  </ng-template>
+</div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="cerrarModificarReservaModal()">Cancelar</button>
+    <button type="button" class="btn btn-primary" (click)="modificarReserva()" [disabled]="!fechaSeleccionada || !nuevaHora">Confirmar</button>
+  </div>
+</ng-template>
+

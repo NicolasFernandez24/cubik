@@ -1,0 +1,95 @@
+.navbar {
+  height: 45px;
+  padding: 10px;
+  transition: background-color 0.5s ease; 
+  background-color: #007BFF;
+}
+
+.navbar-brand img {
+  margin-right: 0px;
+  height: 35px;
+}
+
+.navbar-nav .nav-link {
+  color: white;
+  margin-right: 15px;
+}
+
+.navbar-toggler-icon {
+  background-color: white;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active {
+  outline: none;
+}
+
+/* Alinea a la izquierda */
+.navbar-nav.mr-auto {
+  margin-right: 0;
+}
+
+/* Alinea a la derecha */
+.navbar-nav.ml-auto {
+  margin-left: auto;
+}
+
+/* Ajusta el margen entre los elementos */
+.navbar-nav .nav-item {
+  margin-left: 15px;
+}
+/* Estilos para el menú desplegable de notificaciones */
+.dropdown-menu {
+  background-color: #ffffff; /* Color de fondo */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Borde del menú */
+  border-radius: 0.5rem; /* Bordes redondeados */
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Sombra */
+  padding: 0.5rem 0; /* Espaciado interno */
+  width: 20rem; /* Ancho del menú */
+  max-height: 20rem; /* Altura máxima para desplazamiento */
+  overflow-y: auto; /* Habilitar desplazamiento vertical si es necesario */
+}
+
+/* Estilos para cada ítem de notificación */
+.notification-item {
+  padding: 1rem 1.5rem; /* Espaciado interno */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Borde inferior */
+  transition: background-color 0.3s ease; /* Transición suave */
+}
+
+/* Estilos al pasar el mouse sobre los ítems de notificación */
+.notification-item:hover {
+  background-color: #f8f9fa; /* Color de fondo al pasar el mouse */
+  cursor: pointer; /* Cambiar cursor a mano */
+}
+
+/* Estilos para el ícono de la campana */
+.fa-bell {
+  font-size: 1.2rem; /* Tamaño del ícono */
+  margin-right: 0.5rem; /* Margen derecho */
+}
+
+/* Estilos para el badge de notificaciones sin leer */
+.badge-danger {
+  background-color: #dc3545; /* Color de fondo */
+  color: #ffffff; /* Color del texto */
+  font-size: 0.75rem; /* Tamaño del texto */
+  margin-left: 0.5rem; /* Margen izquierdo */
+  padding: 0.25rem 0.5rem; /* Espaciado interno */
+  border-radius: 0.5rem; /* Bordes redondeados */
+}
+
+/* Estilos para los mensajes de notificación */
+.notification-message {
+  margin-bottom: 0.25rem; /* Margen inferior */
+  color: #333333; /* Color del texto */
+  font-weight: 500; /* Peso de la fuente */
+  overflow: hidden; /* Ocultar el contenido sobrante */
+  text-overflow: ellipsis; /* Mostrar puntos suspensivos si el texto es demasiado largo */
+}
+
+/* Estilos para la hora de la notificación */
+.notification-time {
+  font-size: 0.75rem; /* Tamaño de la fuente */
+  color: #888888; /* Color del texto */
+}

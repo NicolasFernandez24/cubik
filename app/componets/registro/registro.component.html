@@ -1,0 +1,65 @@
+<div class="container-fluid px-0">
+  <video autoplay loop muted class="background-video">
+    <source src="assets/loginvideo.mp4" type="video/mp4">
+    Tu navegador no soporta la etiqueta de video.
+  </video>
+  <div class="row justify-content-center align-items-center vh-100">
+    <div class="col-md-6">
+      <div class="card mt-5 py-4 px-5" style="background: rgba(255, 255, 255, 0.9);">
+        <div class="text-center mb-4">
+          <img src="assets/logokk3.png" alt="Logo de la Sala" class="logo">
+          <h2 class="mb-0 display-4 font-weight-bold mt-3 registro-titulo" style="font-size: 2.5rem;">Registro</h2>
+        </div>
+        <ng-container *ngIf="registroExitoso; else registroForm">
+          <div class="alert alert-success">
+            ¡Registro exitoso! Ahora puedes iniciar sesión.
+          </div>
+        </ng-container>
+        <ng-template #registroForm>
+          <form (ngSubmit)="registrarUsuario()" class="needs-validation" novalidate>
+            <div class="form-group">
+              <input type="text" id="nombre" name="nombre" [(ngModel)]="nuevoUsuario.nombre" class="form-control" placeholder="Nombre" required>
+            </div>
+            <!-- Repite el mismo patrón para los demás campos -->
+            <div class="form-group">
+              <input type="text" id="apellido" name="apellido" [(ngModel)]="nuevoUsuario.apellido" class="form-control" placeholder="Apellido" required>
+            </div>
+            <div class="form-group">
+              <input type="text" id="telefono" name="telefono" [(ngModel)]="nuevoUsuario.telefono" class="form-control" placeholder="Teléfono" required>
+            </div>
+            <div class="form-group">
+              <input type="email" id="correo" name="correo" [(ngModel)]="nuevoUsuario.correo" class="form-control" placeholder="Correo" required>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <input type="{{ mostrarContrasena ? 'text' : 'password' }}" id="password" name="password" [(ngModel)]="nuevoUsuario.password" class="form-control" placeholder="Contraseña" required>
+                <div class="input-group-append">
+                  <button type="button" class="btn btn-outline-dark btn-eye" (click)="mostrarContrasena = !mostrarContrasena">
+                    <i class="bi" [ngClass]="{'bi-eye': !mostrarContrasena, 'bi-eye-slash': mostrarContrasena}"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="invalid-feedback">La contraseña debe tener al menos 8 caracteres, una mayúscula y un número.</div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <input type="{{ mostrarConfirmarContrasena ? 'text' : 'password' }}" id="confirmarPassword" name="confirmarPassword" [(ngModel)]="confirmarPassword" class="form-control" placeholder="Confirmar Contraseña" required>
+                <div class="input-group-append">
+                  <button type="button" class="btn btn-outline-dark btn-eye" (click)="mostrarConfirmarContrasena = !mostrarConfirmarContrasena">
+                    <i class="bi" [ngClass]="{'bi-eye': !mostrarConfirmarContrasena, 'bi-eye-slash': mostrarConfirmarContrasena}"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="invalid-feedback">Por favor, confirma tu contraseña.</div>
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger mb-3">
+              {{ errorMessage }}
+            </div>
+            <button type="submit" class="btn btn-orange btn-block mt-4">Registrarse</button>
+          </form>
+          <button type="button" class="btn btn-light btn-block mt-3" (click)="irAlLogin()">Ya tengo una cuenta</button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

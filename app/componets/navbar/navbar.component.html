@@ -1,0 +1,76 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="./assets/logokk3.png" alt="Tu Logo" height="40">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home">Inicio</a>
+        </li>
+      
+        
+      </ul>
+
+      <ul class="navbar-nav ml-auto">
+        <ng-container *ngIf="isLoggedIn()">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/reservas">Ver Reservas</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/usuario">Modificar Usuario</a>
+          </li>
+          
+          <ng-container *ngIf="isAdmin()">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/modifica-sala">Modificar Salas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/equipos">Equipos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/promocion">Promociones</a>
+            </li>
+          </ng-container>
+          
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login" (click)="logout()">Logout</a>
+          </li>
+        </ng-container>
+
+        <ng-container *ngIf="!isLoggedIn()">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">Login</a>
+          </li>
+        </ng-container>
+        <li class="nav-item dropdown" *ngIf="isLoggedIn()">
+          <a class="nav-link dropdown-toggle" id="notificacionesDropdown" role="button" (click)="toggleMostrarNotificaciones()">
+            <i class="fa fa-bell"></i> <!-- Icono de notificaciones -->
+            <span class="badge badge-danger">{{ numNotificacionesSinLeer }}</span> <!-- Número de notificaciones sin leer -->
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" [class.show]="mostrandoNotificaciones" aria-labelledby="notificacionesDropdown">
+            <!-- Aquí se muestran las notificaciones -->
+            <ng-container *ngFor="let notificacion of notificaciones">
+              <a class="dropdown-item" *ngIf="!notificacion.estado" (click)="marcarNotificacionLeida(notificacion.id)">
+                {{ notificacion.mensaje }}
+              </a>
+            </ng-container>
+            <!-- Mensaje en caso de no haber notificaciones -->
+            <div *ngIf="notificaciones.length === 0" class="dropdown-item">
+              No hay nuevas notificaciones
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+   
+   
+  </div>
+</nav>

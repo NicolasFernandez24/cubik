@@ -1,0 +1,149 @@
+.home-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+    position: relative;
+ }  
+
+ .background {
+    background-image: url('C:/Users/usuario/Desktop/CubikProyect/src/assets/backgroundSala.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+  }
+  .user-form {
+    display: grid;
+    grid-gap: 15px;
+}
+
+.user-form label {
+    color: #42a5f5;
+}
+
+.user-form input {
+    padding: 10px;
+    border: 1px solid #42a5f5;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.user-form button {
+    background-color: #42a5f5;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.user-profile {
+    padding: 50px;
+    border: 3px solid #090cd3;
+    border-radius: 5px;
+    background-color: #c2e9f0;
+    margin-bottom: 40px; 
+    opacity: 0.95;
+    width: 80%; /* Ajustamos el ancho al 80% del contenedor */
+    max-width: 600px; /* Establecemos un ancho máximo para evitar que sea demasiado ancho en pantallas grandes */
+    margin-top: 40px; /* Agregamos margen superior para moverlo hacia abajo */
+    position: relative; /* Ajustamos la posición para permitir el z-index */
+    z-index: 1; /* Aseguramos que esté por encima del fondo */
+}
+  
+  .profile-heading {
+    font-family: 'Monoton';
+    color: rgb(11, 53, 143);
+    font-size: 30px;
+  }
+  
+  .profile-info {
+    font-size: 18px;
+  }
+  
+  .edit-mode {
+    margin-top: 20px;
+  }
+  
+  .edit-form {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .password-edit {
+    margin-top: 10px;
+  }
+  
+  .password-input {
+    display: flex;
+    align-items: center;
+  }
+  
+  .password-input input {
+    flex: 1;
+  }
+  
+  .contact-section {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  .contact-heading {
+    color: #333;
+    font-size: 24px;
+  }
+  
+  .contact-info {
+    font-size: 18px;
+  }
+  
+  .social-link {
+    display: inline-block;
+    margin-right: 10px;
+    color: #333;
+  }
+  
+  .social-link i {
+    margin-right: 5px;
+  }
+  .logo-img {
+    width: 250px; /* Ajusta el ancho máximo del logo según sea necesario */
+    height: 200px;
+    opacity: 1;
+  }
+  .container-logo{
+    text-align: center;
+
+  }
+  .logo-img2 {
+    width: 100px; /* Ajusta el ancho máximo del logo según sea necesario */
+    height: 50px;
+    opacity: 1;
+  }
+  .profile-heading-container {
+    display: flex;
+    justify-content: space-between; /* Distribuye los elementos en el contenedor */
+    align-items: center; /* Centra verticalmente los elementos */
+  }
+  
+  .container-logo2 {
+    text-align: right; /* Alinea el contenido a la derecha */
+  }
+  .error-message {
+    color: red;
+    margin-bottom: 10px;
+  }
+  
+  .success-message {
+    color: green;
+    margin-bottom: 10px;
+  }
+  

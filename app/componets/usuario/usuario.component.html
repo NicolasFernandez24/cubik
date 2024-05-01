@@ -1,0 +1,68 @@
+<app-navbar></app-navbar>
+<div class="home-container">
+    <div class="background"></div>
+    
+    <div *ngIf="usuario" class="user-profile">
+     
+      
+      <div *ngIf="!isEditMode" class="profile-info">
+         <h2 class="profile-heading">Perfil </h2>
+        <!-- Modo de visualización -->
+        <p><strong>Nombre:</strong> {{ usuario.nombre }} <span (click)="toggleEditMode('nombre')">&#9998;</span></p>
+        <p><strong>Apellido:</strong> {{ usuario.apellido }} <span (click)="toggleEditMode('apellido')">&#9998;</span></p>
+        <p><strong>Teléfono:</strong> {{ usuario.telefono }} <span (click)="toggleEditMode('telefono')">&#9998;</span></p>
+        <p><strong>Correo:</strong> {{ usuario.correo }} <span (click)="toggleEditMode('correo')">&#9998;</span></p>
+        <p><strong>Contraseña:</strong> ******** <span (click)="toggleEditMode('password')"><i class="bi bi-eye-fill"></i></span></p>
+        <div class="container-logo mt-3"> 
+         <img src="./assets/logokk3.png" alt="Logo de la Página de Inicio" class="logo-img img-fluid rounded">
+       </div>
+      </div>
+      
+      <div *ngIf="isEditMode" class="edit-mode">
+         <!-- Modo de edición -->
+         <div class="profile-heading-container">
+            <h2 class="profile-heading">Perfil </h2>
+            <div class="container-logo2">
+              <img src="./assets/logokk3.png" alt="Logo de la Página de Inicio" class="logo-img2 img-fluid rounded">
+            </div>
+          </div>
+         <form (submit)="modificarUsuario()" class="edit-form">
+           <label *ngIf="editedField === 'nombre'" for="nombre">Editar Nombre:</label>
+           <input *ngIf="editedField === 'nombre'" type="text" id="nombre" [(ngModel)]="editedValues['nombre']" name="nombre" class="form-control">
+           
+           <label *ngIf="editedField === 'apellido'" for="apellido">Editar Apellido:</label>
+           <input *ngIf="editedField === 'apellido'" type="text" id="apellido" [(ngModel)]="editedValues['apellido']" name="apellido" class="form-control">
+           
+           <label *ngIf="editedField === 'telefono'" for="telefono">Editar Teléfono:</label>
+           <input *ngIf="editedField === 'telefono'" type="text" id="telefono" [(ngModel)]="editedValues['telefono']" name="telefono" class="form-control">
+           
+           <label *ngIf="editedField === 'correo'" for="correo">Editar Correo:</label>
+           <input *ngIf="editedField === 'correo'" type="text" id="correo" [(ngModel)]="editedValues['correo']" name="correo" class="form-control">
+           
+           <div *ngIf="editedField === 'password'" class="password-edit">
+            <label for="contrasenaActual">Contraseña Actual:</label>
+            <div class="password-input">
+                <input type="{{ mostrarContrasenaActual ? 'text' : 'password' }}" id="contrasenaActual" [(ngModel)]="editedValues['contrasenaActual']" name="contrasenaActual" class="form-control">
+                <button type="button" (click)="toggleMostrarContrasenaActual()" class="btn btn-light">
+                  <i class="bi" [ngClass]="{'bi-eye': !mostrarContrasenaActual, 'bi-eye-slash': mostrarContrasenaActual}"></i>
+                </button>
+            </div>
+            
+            <label for="password">Nueva Contraseña:</label>
+            <div class="password-input">
+                <input type="{{ mostrarNuevaContrasena ? 'text' : 'password' }}" id="password" [(ngModel)]="editedValues['password']" name="password" class="form-control">
+                <button type="button" (click)="toggleMostrarNuevaContrasena()" class="btn btn-light">
+                  <i class="bi" [ngClass]="{'bi-eye': !mostrarNuevaContrasena, 'bi-eye-slash': mostrarNuevaContrasena}"></i>
+                </button>
+            </div>
+        </div>
+           <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+           <button type="button" (click)="toggleEditMode(null)" class="btn btn-secondary">Cancelar</button>
+         </form>
+       </div>
+       <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+         <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+    </div>
+    
+</div>
+

@@ -1,0 +1,105 @@
+
+  .salas-title {
+    font-size: 2.5rem; /* Tamaño de fuente más grande */
+    color: #ffffff; /* Color de texto más oscuro */
+    text-shadow: 2px 2px 4px rgb(30, 8, 224); /* Sombra de texto para resaltar */
+    padding: 20px;
+  }
+  
+  .card {
+    width: 400px; /* Ancho deseado para las cartas */
+    margin-bottom: 20px; /* Espacio entre las cartas */
+    min-height: 400px;
+  }
+  
+  .card-img-top {
+    width: 100%;
+    height: 400px; /* La imagen ocupa todo el espacio dentro de la carta */
+    
+  }
+  
+
+  .home-container {
+    min-height: 100vh; /* Asegura que el contenedor abarque al menos toda la pantalla */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+    position: relative;
+  }
+  .card {
+  position: relative;
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente */
+  opacity: 0; /* Ocultar inicialmente */
+  transition: opacity 0.3s ease; /* Transición suave */
+}
+
+.card:hover .card-overlay {
+  opacity: 1; /* Mostrar al pasar el mouse */
+}
+
+.card-overlay .btn {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.card {
+    width: 400px;
+    margin-bottom: 20px;
+    min-height: 400px;
+    position: relative;
+  }
+  
+  .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .card:hover .card-overlay {
+    opacity: 1;
+  }
+  
+  .card-overlay .btn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .card-name {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .card-text {
+    font-size: 18px;
+  }
+  .background {
+    background-image: url('C:/Users/usuario/Desktop/CubikProyect/src/assets/backgroundText2.jpg'); 
+    background-size: cover;
+    background-repeat: repeat-y;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }

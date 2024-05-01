@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+<div class="home-container">
+<div class="background"></div>
+<div class="container mt-5">
+    <div class="form-group">
+        <label for="nombre" class="text-white" style="font-size: 20px;">Nombre:</label>
+        <input type="text" id="nombre" class="form-control" [(ngModel)]="nombre">
+    </div>
+    
+    <div class="form-group">
+        <label for="descripcion" class="text-white" style="font-size: 20px;">Descripción:</label>
+        <input type="text" id="descripcion" class="form-control" [(ngModel)]="descripcion">
+    </div>
+    
+    <div class="form-group">
+        <label for="tipoDescuento" class="text-white" style="font-size: 20px;">Tipo de Descuento:</label>
+        <input type="text" id="tipoDescuento" class="form-control" [(ngModel)]="tipoDescuento">
+    </div>
+    
+    <div class="form-group">
+        <label for="duracionAdicional" class="text-white" style="font-size: 20px;">Duración Adicional:</label>
+        <input type="text" id="duracionAdicional" class="form-control" [(ngModel)]="duracionAdicional">
+    </div>
+    
+    <div class="form-group">
+        <label for="descuento" class="text-white" style="font-size: 20px;">Descuento:</label>
+        <input type="text" id="descuento" class="form-control" [(ngModel)]="descuento">
+    </div>
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="habilitado" name="habilitado" [(ngModel)]="habilitada">
+        <label class="form-check-label text-white" for="habilitado" style="font-size: 20px;">Habilitado</label>
+    </div>
+    <button (click)="agregarPromocion()" class="btn btn-primary mt-3" style="font-size: 20px; background-color: #48cae4; border-color: #48cae4;">{{ isEditing ? 'Actualizar Promoción' : 'Agregar Promoción' }}</button>
+
+    <h2 class="text-white mt-4" style="font-size: 24px;">Lista de Promociones</h2>
+    <ul class="list-group mt-3">
+        <li class="list-group-item" *ngFor="let promocion of promociones">
+            <span style="font-size: 20px;">{{ promocion.nombre }} - {{ promocion.descripcion }} {{ promocion.habilitada ? '✔️' : '❌' }}</span>
+            <button (click)="editarPromocion(promocion)" class="btn btn-sm btn-info ml-2" style="font-size: 16px; margin-right: 5px; background-color: #48cae4; border-color: #48cae4;">Editar</button>
+            <button (click)="eliminarPromocion(promocion.id)" class="btn btn-sm btn-danger ml-2" style="font-size: 16px; background-color: #ff6961; border-color: #ff6961;">Eliminar</button>
+        </li>
+    </ul>
+</div>
+</div>

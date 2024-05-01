@@ -1,0 +1,63 @@
+.container{
+    height: 100vh;
+    
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+    position: relative;
+}
+.led-border {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 50px rgba(0, 255, 255, 0.5);
+}
+
+.led-border:before {
+    content: '';
+    position: absolute;
+    top: -2px; /* Ajuste para compensar el grosor del borde */
+    left: -2px; /* Ajuste para compensar el grosor del borde */
+    width: calc(100% + 4px); /* Ajuste para compensar el grosor del borde */
+    height: calc(100% + 4px); /* Ajuste para compensar el grosor del borde */
+    border: 2px solid transparent;
+    border-radius: 8px;
+    animation: led-animation 1.5s infinite linear;
+    pointer-events: none; 
+}
+
+.led-border:after {
+    content: '';
+    position: absolute;
+    top: -2px; /* Ajuste para compensar el grosor del borde */
+    left: -2px; /* Ajuste para compensar el grosor del borde */
+    width: calc(100% + 4px); /* Ajuste para compensar el grosor del borde */
+    height: calc(100% + 4px); /* Ajuste para compensar el grosor del borde */
+    border: 2px solid transparent;
+    border-radius: 8px;
+    animation: led-animation-reverse 1.5s infinite linear;
+    pointer-events: none; 
+}
+
+@keyframes led-animation {
+    0% { border-color: rgba(0, 255, 255, 0.5); }
+    50% { border-color: rgba(0, 255, 255, 0); }
+    100% { border-color: rgba(0, 255, 255, 0.5); }
+}
+
+@keyframes led-animation-reverse {
+    0% { border-color: rgba(0, 255, 255, 0); }
+    50% { border-color: rgba(0, 255, 255, 0.5); }
+    100% { border-color: rgba(0, 255, 255, 0); }
+}
+.background {
+    background-image: url('C:/Users/usuario/Desktop/CubikProyect/src/assets/backgroundText.jpg'); 
+    background-size: cover;
+  background-repeat: repeat-y;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  }

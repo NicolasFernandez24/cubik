@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+
+<div class="home-container">
+    <div class="background"></div>
+    <div class="content" style="margin-top: 100px;"> <!-- Ajustar el margen superior para evitar la superposición con el fondo -->
+        <div class="logo mt-3"> 
+            <img src="./assets/logokk.png" alt="Logo de la Página de Inicio" class="logo-img img-fluid rounded">
+        </div>
+        <h2 class="mb-0 display-4 font-weight-bold ml-1 kubikpresentacion" style="font-size: 4rem; margin-top: 20px;">Bienvenido a KubiK</h2>
+        <!-- Contenido adicional de la página de inicio -->
+        <p class="mb-2 display-2 ml-1 kubikdialogo" style="font-size: 2.4rem">Realiza tu reserva ahora</p>
+        <button class="btn btn-primary btn-lg mt-3" (click)="playGuitarSoundAndNavigate()">Reservar ahora</button>
+
+        <!-- Mapa de Google Maps -->
+        <div style="margin-top: 20px; display: flex;">
+            <div style="flex: 1;">
+                <div id="map" style="width: 100%; height: 400px;"></div>
+            </div>
+        </div>
+       
+        <div style=" margin-top: 20px;">
+            <p style="font-size: 24px; margin-bottom: 50px; display: inline-block; margin-right: 50px;"> <!-- Aumentar el espacio entre los íconos -->
+                <a href="https://www.facebook.com/profile.php?id=100073966269724&mibextid=ZbWKwL" target="_blank" style="color: #3b5998; text-decoration: none;">
+                    <i class="bi-facebook" style="font-size: 36px;"></i> Facebook
+                </a>
+            </p>
+            <p style="font-size: 24px; margin-bottom: 50px; display: inline-block; margin-right: 50px;"> <!-- Aumentar el espacio entre los íconos -->
+                <a href="https://www.instagram.com/kubiksalasdeensayo" target="_blank" style="color: #e4405f; text-decoration: none;">
+                    <i class="bi-instagram" style="font-size: 36px;"></i> Instagram
+                </a>
+            </p>
+            <p style="font-size: 24px; margin-bottom: 50px; display: inline-block;">
+                <a href="https://wa.me/2615017979" target="_blank" style="color: #25d366; text-decoration: none;">
+                    <i class="bi-whatsapp" style="font-size: 36px;"></i> WhatsApp
+                </a>
+            </p>
+        </div>
+        <p style="font-size: 24px; margin-bottom: 30px;"> <a href="tel:2615017979" style="color: #000000; text-decoration: none;"><i class="bi bi-telephone-fill" style="font-size: 28px;"></i> 261-5017979</a></p>
+    </div>
+</div>

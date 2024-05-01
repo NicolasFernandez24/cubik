@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+
+<div class="home-container">
+  <div class="background"></div>
+  <div class="background"></div>
+  <h2 class="text-center mb-4 salas-title">Salas</h2>
+  <div class="container">
+    <!-- Primera fila -->
+    <div class="row justify-content-center">
+      <ng-container *ngFor="let sala of salas.slice(0, 2)">
+        <div class="col-lg-6 mb-4 d-flex justify-content-center">
+          <div class="card">
+            <div class="card-overlay">
+              <h3 class="card-name">{{ sala.nombre }}</h3>
+              <p class="card-text">Cantidad: {{ sala.cantidad }}</p>
+              <p class="card-text">Precio: ${{ sala.precio }}</p>
+              <p class="card-text">Habilitada: {{ sala.habilitada ? '✔' : '❌' }}</p>
+              <button (click)="modificarSala(sala)" class="btn btn-primary">Modificar</button>
+            </div>
+            <img [src]="sala.imagen" class="card-img-top" alt="Imagen de la sala">
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <!-- Segunda fila -->
+    <div class="row justify-content-center">
+      <ng-container *ngFor="let sala of salas.slice(2)">
+        <div class="col-lg-6 mb-4 d-flex justify-content-center">
+          <div class="card">
+            <div class="card-overlay">
+              <h3 class="card-name">{{ sala.nombre }}</h3>
+              <p class="card-text">Cantidad: {{ sala.cantidad }}</p>
+              <p class="card-text">Precio: ${{ sala.precio }}</p>
+              <p class="card-text">Habilitada: {{ sala.habilitada ? '✔' : '❌' }}</p>
+              <button (click)="modificarSala(sala)" class="btn btn-primary">Modificar</button>
+            </div>
+            <img [src]="sala.imagen" class="card-img-top" alt="Imagen de la sala">
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+

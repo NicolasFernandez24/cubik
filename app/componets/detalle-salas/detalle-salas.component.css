@@ -1,0 +1,63 @@
+.card-img-overlay {
+  text-align: center;
+}
+
+.card-img-overlay > h2 {
+  margin-bottom: 20px; /* Ajusta el espaciado según lo necesites */
+}
+.zoom-img {
+  transition: transform 0.3s ease;
+}
+
+.zoom-img:hover {
+  transform: scale(1.1);
+}
+.row.mt-0 {
+  margin-top: -10px; /* Reduzca el margen superior de la fila */
+}
+
+.container {
+  margin-bottom: -20px; /* Reduzca el margen inferior del contenedor principal */
+}
+.background {
+  background-image: url('C:/Users/usuario/Desktop/CubikProyect/src/assets/backgroundSala.jpg'); 
+  background-size: cover;
+  background-repeat: repeat-y;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+.mat-calendar-body-cell-disabled {
+  color: red;
+}
+.horario-button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.horario-button:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+.btn-primary {
+  background: linear-gradient(to right, #ffff00, #ffcc00, #ff9900);
+  border-color: transparent;
+  color: black;
+}
+.available-date {
+  background-color: white; /* Color de fondo para fechas disponibles */
+}
+
+.unavailable-date {
+  background-color: #ccc; /* Color de fondo para fechas no disponibles */
+}
+.selected {
+  background-color: #ffff00; /* Color de fondo para resaltar el horario seleccionado */
+  color: #000000; /* Cambiar el color del texto para que sea legible en el fondo resaltado */
+}

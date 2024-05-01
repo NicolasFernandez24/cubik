@@ -1,0 +1,94 @@
+.contact-section {
+    background-color: rgba(255, 255, 255, 0.774); /* Color de fondo blanco */
+    padding: 20px; /* Agrega un poco de espacio alrededor del contenido */
+  }
+  .logo-container {
+    background-color: transparent;
+    position: absolute;
+    top: 20px; /* Ajusta la posición desde la parte superior */
+    left: 20px; /* Ajusta la posición desde la izquierda */
+    transition: opacity 0.3s ease-in-out; /* Agrega una transición para suavizar el cambio de opacidad */
+  }
+  
+  .logo-img {
+    width: 200px; /* Ajusta el ancho del logo según sea necesario */
+    height: 100px;
+    opacity: 0.8;
+    background-color: transparent;
+  }
+  
+  .logo-container:hover {
+    opacity: 1;
+    background-color: transparent;
+  }
+  .home-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+    position: relative;
+  }
+  @keyframes salaEntrada {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  /* Estilos para el plano-container */
+.plano-container {
+  position: relative;
+  width: 600px; /* Ajusta el ancho según sea necesario */
+  height: 700px; /* Ajusta la altura según sea necesario */
+  background-image: url('C:/Users/usuario/Desktop/CubikProyect/src/assets/planoSalas.png'); /* Ajusta la ruta de la imagen */
+  background-size: cover;
+  background-position: center;
+  background-color: transparent;
+  opacity: 0.98;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Agrega un margen superior para separar la imagen de la barra de navegación */
+  margin-top: 50px; 
+}
+
+
+
+.sala {
+  /* Estilos para las salas */
+  position: absolute;
+  width: 120px; /* Ajusta el ancho según sea necesario */
+  height: 50px; /* Ajusta la altura según sea necesario */
+
+  border-radius: 8px; /* Para hacer un círculo */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out; 
+  animation: salaEntrada 0.5s ease-out;
+}
+.sala:hover {
+  border: 2px solid white; /* Ajusta el grosor y color del borde al pasar el ratón */
+  transform: scale(1.1); 
+}
+
+
+.background {
+  background-image: url('C:/Users/usuario/Desktop/CubikProyect/src/assets/fondohome.jpg'); 
+  background-size: cover;
+  background-repeat: repeat-y;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}

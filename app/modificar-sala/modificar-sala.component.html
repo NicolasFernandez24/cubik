@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<div class="home-container">
+  <div class="background"></div>
+<div class="container">
+    <h2 class=" salas-title  text-center">Modificar Sala</h2>
+    <form (submit)="guardarCambios()" class="modify-form">
+      <div class="form-group">
+        <label for="nombre" class="form-label">Nombre:</label>
+        <input type="text" class="form-control" id="nombre" [(ngModel)]="sala.nombre" name="nombre">
+      </div>
+      <div class="form-group">
+        <label for="cantidad" class="form-label">Cantidad:</label>
+        <input type="number" class="form-control" id="cantidad" [(ngModel)]="sala.cantidad" name="cantidad">
+      </div>
+      <div class="form-group">
+        <label for="precio" class="form-label">Precio:</label>
+        <div class="input-group">
+          <span class="input-group-text">$</span>
+          <input type="number" class="form-control" id="precio" [(ngModel)]="sala.precio" name="precio">
+        </div>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="habilitada" [(ngModel)]="sala.habilitada" name="habilitada">
+        <label class="form-check-label" for="habilitada">Habilitada</label>
+    </div>
+      <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+      <button type="button" class="btn btn-secondary" (click)="cancelarModificacion()">Cancelar</button>
+    </form>
+  </div>
+</div>
+

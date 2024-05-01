@@ -1,0 +1,17 @@
+<app-navbar></app-navbar>
+<div class="background"></div>
+<div class="home-container">
+   <div class="logo-container" (mouseover)="onMouseOver()" (mouseout)="onMouseOut()">
+      <img src="./assets/logokk3.png" alt="Logo" class="logo-img" [style.opacity]="logoOpacity"> <!-- Ajusta la ruta correcta de tu logo -->
+  </div>
+ 
+  
+    <div class="plano-container">
+        <!-- Utilizamos ngFor para iterar sobre las salas y crear un div para cada una -->
+        <div *ngFor="let sala of salas" [routerLink]="['/sala', sala.id]" class="sala" [style.left.px]="sala.x" [style.top.px]="sala.y">
+            {{ sala.nombre }}
+            
+        </div>
+    </div>
+    
+</div>

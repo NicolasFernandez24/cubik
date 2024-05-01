@@ -1,0 +1,33 @@
+.background-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+}
+
+.logo {
+  width: 100px; /* Ajusta el tamaño del logo según sea necesario */
+}
+
+.registro-titulo {
+  font-family: 'Monoton', cursive;
+  color: rgb(66, 118, 231);
+}
+
+.btn-orange {
+  background-color: rgb(228, 149, 3);
+  color: white;
+  border: none;
+}
+
+.btn-orange:hover {
+  background-color: rgb(255, 160, 0);
+}
+
+.btn-eye {
+  cursor: pointer;
+}

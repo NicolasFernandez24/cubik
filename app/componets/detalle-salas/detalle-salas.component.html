@@ -1,0 +1,123 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid p-0">
+  <div class="row">
+    <div class="col-12">
+      <div class="card bg-dark text-white position-relative">
+        <div class="background"></div>
+        <img [src]="backgroundImage" class="card-img" alt="Background Image" style="height: 30vh; width: 100%;">
+        <div class="card-img-overlay d-flex flex-column justify-content-end align-items-center">
+          <h2 style="font-family: Arial, sans-serif; font-size: 2rem; margin-bottom: 20px;">{{ sala.nombre }}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-3">
+  <div class="background"></div>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <p style="font-family: Arial, sans-serif; font-size: 1.2rem;">Capacidad: {{ sala.cantidad }} personas <i class="bi bi-person"></i></p>
+          <p style="font-family: Arial, sans-serif; font-size: 1.2rem;">Precio: ${{ sala.precio }} <i class="bi bi-cash"></i></p>
+          <p style="font-family: Arial, sans-serif; font-size: 1.2rem;">
+            <ng-container *ngIf="sala.habilitada; else noHabilitada">
+              Habilitada <i class="bi bi-check-circle-fill text-success"></i>
+            </ng-container>
+            <ng-template #noHabilitada>
+              No habilitada <i class="bi bi-x-circle-fill text-danger"></i>
+            </ng-template>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-4">
+      <img [src]="imgSala[0]" alt="Sala 1" class="img-fluid zoom-img" style="max-height: 700px;">
+    </div>
+    <div class="col-4">
+      <img [src]="imgSala[1]" alt="Sala 2" class="img-fluid zoom-img" style="max-height: 700px;">
+    </div>
+    <div class="col-4">
+      <img [src]="imgSala[2]" alt="Sala 3" class="img-fluid zoom-img" style="max-height: 700px;">
+    </div>
+  </div>
+  <div class="container mt-3">
+    <h3 style="color: white;">Selecciona una fecha:</h3>
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha seleccionada</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="fechaSeleccionada" (dateInput)="onSelectFecha($event.target.value)" [min]="minDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <h3 style="color: white;">Horarios disponibles para la fecha seleccionada:</h3>
+    <div *ngIf="fechaSeleccionada">
+      <div *ngIf="horariosDisponibles.length > 0; else noHorarios">
+        <button *ngFor="let horario of horariosDisponibles"
+                (click)="selectHorario(horario)"
+                class="btn btn-outline-light horario-button"
+                [class.selected]="horario === horarioSeleccionado">
+          {{ horario }}
+        </button>
+      </div>
+      <ng-template #noHorarios>
+        <p>No hay horarios disponibles para esta fecha.</p>
+      </ng-template>
+    </div>
+    
+    <ng-template #reservaModal let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title">Reservar Sala</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+
+        <p>Duración de la reserva: 2 horas</p>
+        
+        
+        <div class="form-check mt-3">
+          <input class="form-check-input" type="checkbox" id="alquilarEquipo" [(ngModel)]="alquilarEquipo" (change)="showEquipmentImage()">
+          <label class="form-check-label" for="alquilarEquipo">
+            ¿Desea alquilar equipo adicional?
+          </label>
+        </div>
+        
+       
+        <div *ngIf="alquilarEquipo">
+          <label>Seleccionar equipos adicionales:</label>
+          <div *ngFor="let equipo of equiposDisponibles">
+            <input type="checkbox" [checked]="equipoSeleccionado.has(equipo.id || 0)" (change)="toggleEquipoSelection(equipo.id || 0)">
+
+            {{ equipo.nombre }} - ${{ equipo.precio }}
+          </div>
+          <div>
+            <img *ngFor="let image of getEquipmentImages()" [src]="image" alt="Imagen del equipo" style="max-width: 100px;">
+          </div>
+        </div>
+        
+        <p>Total: ${{ calcularPrecioTotal() }}</p>
+      <div class="form-group">
+      <label for="monto">Monto a pagar:</label>
+      <input type="number" class="form-control" id="monto" [(ngModel)]="montoAPagar" placeholder="Ingrese el monto a pagar">
+      <p *ngIf="mostrarMensajeError" class="text-danger">El monto a pagar debe ser superior a la mitad del monto total.</p>
+    </div>
+    
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="d()" (click)="limpiarModal()">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="confirmarReserva()">Confirmar Reserva</button>
+      </div>
+    </ng-template>
+    
+   
+    <button *ngIf="horaSeleccionada" type="button" class="btn btn-lg btn-primary mt-3" style="background: linear-gradient(to right, #ffff00, #ffcc00, #ff9900); border: none;" (click)="abrirModalReserva()">Reservar</button>
+
+  </div>
+</div>
